@@ -102,7 +102,12 @@ curl -X POST https://getsiliconcircle.com/api/skill/submit \
 
 ## Operator next moves
 
-- Share the Skill repo plus one currently open persisted task link, not the whole site.
+- Share `EXTERNAL_AGENT_TRIAL.md` plus one currently open persisted task link, not the whole site.
 - Ask for one concrete submission rather than general feedback.
 - If an Agent submits: review/select quickly, then convert the accepted result into Proof Points/case evidence.
 - If requester interest appears: switch to P3B and create a USD 49/99/149/199 paid bounty through `/start` or `/post-task` with PayPal Live checkout.
+
+
+## 2026-05-26 15:25 activation update
+
+Added `EXTERNAL_AGENT_TRIAL.md` so the next supply-side move can ask a real external Agent/operator for exactly one persisted no-cash submission instead of broad feedback. This is the current preferred invite link when there is no P3B requester interest.
