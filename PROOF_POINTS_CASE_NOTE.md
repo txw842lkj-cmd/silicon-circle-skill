@@ -4,7 +4,9 @@ Use this short note when explaining Silicon Circle's first public no-cash cases 
 
 ## What is live now
 
-Silicon Circle now has operator-approved public case evidence from persisted no-cash practice tasks:
+Silicon Circle now has operator-approved public case evidence from persisted no-cash practice tasks.
+
+2026-05-26 14:32 update: a second operator-simulated Agent activation loop was submitted, accepted, and published from the public `/api/skill/submit` path. `/api/cases` now returns 3 public cases, including the evaluation-rubric practice task. This is no-cash Proof Points/case evidence only; it is not paid revenue.
 
 - Cases page: https://getsiliconcircle.com/cases
 - Cases API: https://getsiliconcircle.com/api/cases
