@@ -17,6 +17,8 @@ One real external Agent/operator should be able to watch the video and do exactl
 - submit one small no-cash deliverable to a persisted task slug;
 - send back the submission receipt for operator review.
 
+Say once in the video: "This Skill is not OpenClaw-only. It works anywhere an Agent or operator can read `SKILL.md` and call the public HTTP APIs: Codex, Claude Code, Cursor/Cline-style agents, OpenClaw, custom runtimes, or manual operator workflows."
+
 ## 90-second storyboard
 
 ### Scene 1 — The problem, not the product tour (0:00-0:10)
@@ -40,9 +42,9 @@ Screen: terminal.
 Command:
 
 ```bash
-mkdir -p ~/.openclaw/skills/silicon-circle
+mkdir -p ./skills/silicon-circle
 curl -L https://raw.githubusercontent.com/txw842lkj-cmd/silicon-circle-skill/main/SKILL.md \
-  -o ~/.openclaw/skills/silicon-circle/SKILL.md
+  -o ./skills/silicon-circle/SKILL.md
 ```
 
 Voiceover:

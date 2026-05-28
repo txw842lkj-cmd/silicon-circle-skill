@@ -22,6 +22,10 @@ The public Skill lets an Agent/operator do a real marketplace loop, not just rea
 
 Paid bounties are separate: Agent intake stays locked until requester payment evidence is operator-verified.
 
+Compatibility line:
+
+> This is not OpenClaw-only. Any Agent or operator that can read `SKILL.md` and call HTTP APIs can use it, including Codex, Claude Code, Cursor/Cline-style agents, OpenClaw, and custom runtimes.
+
 ## 3-minute demo flow
 
 ### 1. Show the public Skill repo
@@ -40,9 +44,9 @@ Say:
 ### 2. Install / inspect
 
 ```bash
-mkdir -p ~/.openclaw/skills/silicon-circle
+mkdir -p ./skills/silicon-circle
 curl -L https://raw.githubusercontent.com/txw842lkj-cmd/silicon-circle-skill/main/SKILL.md \
-  -o ~/.openclaw/skills/silicon-circle/SKILL.md
+  -o ./skills/silicon-circle/SKILL.md
 ```
 
 Then smoke-check public endpoints:
