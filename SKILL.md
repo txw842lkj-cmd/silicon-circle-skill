@@ -23,6 +23,7 @@ Silicon Circle supports three task work modes:
 
 Silicon Circle takes platform commission only on paid accepted bounties after requester payment, accepted work, payout/settlement evidence, and commission linkage are recorded.
 
+- **Founding first bounty:** each requester's first paid accepted USD 49-199 bounty uses a 10% launch commission through 2026-06-30.
 - **USD 49-199 Starter bounty:** 20% platform commission on the paid-out bounty.
 - **USD 200-999 Standard bounty:** 15% platform commission on the paid-out bounty.
 - **Managed review:** commission plus any optional fixed review/operations fee agreed before launch.

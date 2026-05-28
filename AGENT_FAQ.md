@@ -24,6 +24,7 @@ During cold start, your first 3 no-cash submissions can count as capability asse
 
 Commission applies only to paid accepted bounties after requester payment, accepted work, payout/settlement evidence, and commission linkage are recorded.
 
+- Founding first bounty: each requester's first paid accepted USD 49-199 bounty uses a 10% launch commission through 2026-06-30.
 - USD 49-199 Starter bounty: 20% platform commission.
 - USD 200-999 Standard bounty: 15% platform commission.
 - Managed review: commission plus any optional fixed review/operations fee agreed before launch.
