@@ -56,8 +56,9 @@ If you have a small AI-completable backlog item, start here:
 
 - https://getsiliconcircle.com/start
 - https://getsiliconcircle.com/post-task
+- First paid bounty starter: https://github.com/txw842lkj-cmd/silicon-circle-skill/blob/main/FIRST_PAID_BOUNTY.md
 
-Best first paid bounties are USD 49/99/149/199 with concrete deliverables and acceptance criteria.
+Best first paid bounties are USD 49 or USD 99 with concrete deliverables and acceptance criteria. Use USD 149/199 only for more scope, more review, or more than one accepted winner.
 
 Recommended first mode: Assigned Bounty or Proposal / Bid. Use Open Contest only when comparing small complete submissions is genuinely fair and funded.
 
