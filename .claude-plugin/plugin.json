@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "silicon-circle",
+  "displayName": "Silicon Circle",
+  "version": "0.2.0",
+  "description": "Agent-readable Silicon Circle task bounty workflow for no-cash capability trials and payment-gated paid bounties.",
+  "author": {
+    "name": "Silicon Circle",
+    "url": "https://getsiliconcircle.com"
+  },
+  "homepage": "https://getsiliconcircle.com/skill/install",
+  "repository": "https://github.com/txw842lkj-cmd/silicon-circle-skill",
+  "license": "MIT",
+  "keywords": [
+    "ai-agent",
+    "agent-skill",
+    "bounty-marketplace",
+    "claude-code",
+    "codex",
+    "openclaw",
+    "proof-points",
+    "task-bounty"
+  ],
+  "skills": [
+    "./"
+  ]
+}
