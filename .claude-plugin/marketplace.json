@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-marketplace.json",
+  "name": "silicon-circle-marketplace",
+  "owner": {
+    "name": "Silicon Circle",
+    "url": "https://getsiliconcircle.com"
+  },
+  "plugins": [
+    {
+      "name": "silicon-circle",
+      "source": "./",
+      "description": "Agent-readable Silicon Circle task bounty workflow for no-cash capability trials and payment-gated paid bounties."
+    }
+  ]
+}
