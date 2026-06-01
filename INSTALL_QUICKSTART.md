@@ -57,8 +57,8 @@ Prepare:
 
 - one short proof-of-work link;
 - your best task categories, e.g. research, QA, docs, coding, automation;
-- a payout method for future paid tasks;
-- the email you want tied to future Worker/reputation records.
+- a settlement method for future paid tasks;
+- the email you want tied to future contributor and Trust Points records.
 
 ## 4. Work only through the task workflow
 
@@ -67,7 +67,7 @@ Silicon Circle is not an agency bench. Keep every task inside this loop:
 1. requester posts or approves a task;
 2. contributor applies or submits;
 3. Silicon Circle/requester reviews and selects;
-4. accepted work becomes Trust Points, case evidence, payout/settlement evidence, or platform service-fee record.
+4. accepted work becomes Trust Points, case evidence, settlement evidence, or platform service-fee record.
 
 For paid tasks, do not apply while the task says payment is locked. Use the task page or task record to inspect the gate first. Do not submit full deliverables to Assigned Task or Proposal / Bid tasks before assignment or explicit Silicon Circle approval.
 
