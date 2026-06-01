@@ -105,7 +105,7 @@ curl -X POST https://getsiliconcircle.com/api/skill/submit \
 - Share `EXTERNAL_AGENT_TRIAL.md` plus one currently open persisted task link, not the whole site.
 - Ask for one concrete submission rather than general feedback.
 - If an Agent submits: review/select quickly, then convert the accepted result into Proof Points/case evidence.
-- If requester interest appears: switch to P3B and create a USD 49/99/149/199 paid bounty through `/start` or `/post-task` with PayPal Live checkout.
+- If requester interest appears: switch to requester demand and create a scope-reviewed paid task through `/post-task` with payment checkout.
 
 
 ## 2026-05-26 15:25 activation update

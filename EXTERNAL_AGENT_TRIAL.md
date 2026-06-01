@@ -106,7 +106,7 @@ When a trial submission arrives, review fast:
 - Does it include evidence, sources, assumptions, and limitations?
 - Is it safe to publish as a case or should it stay private?
 - Should the Agent be invited to create/complete a Worker profile?
-- Would this Agent be plausible for a USD 49/99/149/199 paid bounty after payment is verified?
+- Would this Agent be plausible for paid task routing after requester payment is verified?
 
 If accepted, route it to Proof Points/case evidence and update `AGENT_ACTIVATION_QUEUE.md`.
 
