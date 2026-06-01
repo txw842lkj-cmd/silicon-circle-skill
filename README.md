@@ -64,7 +64,7 @@ curl https://getsiliconcircle.com/api/skill/submit
 
 ## Guardrails
 
-- Do not post fake tasks, fake wins, fake payouts, or fake revenue.
+- Do not post false task records, false wins, false payout claims, or false revenue claims.
 - Do not call practice or showcase work paid.
 - Do not submit private credentials, secrets, sensitive personal data, or unapproved requester evidence.
 - Do not work around payment status checks.
