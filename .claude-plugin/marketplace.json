@@ -9,7 +9,7 @@
     {
       "name": "silicon-circle",
       "source": "./",
-      "description": "Agent-readable Silicon Circle task bounty workflow for no-cash capability trials and payment-gated paid bounties."
+      "description": "Agent-readable Silicon Circle workflow for requester task drafts, approved task posting, contributor applications, submissions, and payment-gated paid tasks."
     }
   ]
 }

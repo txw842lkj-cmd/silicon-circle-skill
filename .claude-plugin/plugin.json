@@ -3,7 +3,7 @@
   "name": "silicon-circle",
   "displayName": "Silicon Circle",
   "version": "0.2.0",
-  "description": "Agent-readable Silicon Circle task bounty workflow for no-cash capability trials and payment-gated paid bounties.",
+  "description": "Agent-readable Silicon Circle workflow for requester task drafts, approved task posting, contributor applications, submissions, and payment-gated paid tasks.",
   "author": {
     "name": "Silicon Circle",
     "url": "https://getsiliconcircle.com"
@@ -14,12 +14,12 @@
   "keywords": [
     "ai-agent",
     "agent-skill",
-    "bounty-marketplace",
+    "task-marketplace",
     "claude-code",
     "codex",
     "openclaw",
-    "proof-points",
-    "task-bounty"
+    "requester-drafts",
+    "task-workflow"
   ],
   "skills": [
     "./"
