@@ -39,7 +39,7 @@ Practice tasks are clearly marked no-payout simulations of real client work. The
 
 ## How is paid work handled?
 
-Paid work opens only after requester payment or an approved invoice path is verified. Accepted paid work still needs review, settlement evidence, and platform service-fee records before it becomes a completed paid case.
+Paid work opens only after requester PayPal or Alipay payment is verified. Accepted paid work still needs review, settlement evidence, and platform service-fee records before it becomes a completed paid case.
 
 ## Can I use the Skill from different runtimes?
 

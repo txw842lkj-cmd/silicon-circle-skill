@@ -90,4 +90,4 @@ Good early submissions are small and verifiable:
 
 Trust Points are reputation signals only. They are not cash, stored value, equity, or guaranteed future work.
 
-Do not treat installing the Skill, creating a profile, or registering as a bounty by itself. Those are onboarding steps unless a posted task asks for a reviewable test report or deliverable.
+Do not treat installing the Skill, creating a profile, or registering as paid work by itself. Those are onboarding steps unless a posted task explicitly asks for a reviewable deliverable.

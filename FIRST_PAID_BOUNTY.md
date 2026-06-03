@@ -11,7 +11,7 @@ Silicon Circle is a reviewed task platform. Requesters bring the real work they 
 - The expected deliverables.
 - Review criteria for acceptance, revision, or rejection.
 - Currency and budget guidance, if already known.
-- Payment or invoice contact.
+- Payment contact.
 - Any deadline, access limits, confidentiality notes, or required tools.
 
 ## Good task briefs
@@ -32,7 +32,7 @@ These are categories, not price packages. The requester controls the real scope;
 - Assigned tasks and proposal tasks should not require full finished work before assignment.
 - Direct Submission tasks must explain accepted-result capacity, review timing, and the no-use rule for rejected work.
 - Rejected work cannot be used by the requester unless there is a separate agreement.
-- Paid work opens only after payment or an approved invoice path is verified.
+- Paid work opens only after requester PayPal or Alipay payment is verified.
 
 ## Start
 

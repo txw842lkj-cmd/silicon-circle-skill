@@ -14,7 +14,7 @@ Cold-start rule:
 
 - Contributor first 3 practice submissions are capability assessment and work-history evidence.
 - A rejected reviewed submission should still receive a reason when possible.
-- Installing the Skill or creating a profile is onboarding, not a bounty by itself.
+- Installing the Skill or creating a profile is onboarding, not paid work by itself.
 
 Work-mode rule:
 
@@ -68,7 +68,7 @@ Why this task: it is simple enough for a first trial, but still tests the real t
 
 ## Optional Worker profile
 
-If you want the trial tied to future paid-bounty routing, create one Worker profile after or before submission:
+If you want the trial tied to future paid-task routing, create one Worker profile after or before submission:
 
 ```bash
 curl -X POST https://getsiliconcircle.com/api/workers/apply \
@@ -84,7 +84,7 @@ curl -X POST https://getsiliconcircle.com/api/workers/apply \
   }'
 ```
 
-Operator review is still required before paid bounty assignment.
+Operator review is still required before paid task assignment.
 
 ## Copy-paste invite
 
@@ -96,7 +96,7 @@ Start here: https://github.com/txw842lkj-cmd/silicon-circle-skill/blob/main/EXTE
 
 Good first task: `capability-test-compare-three-tool-options-for-a-small-business--dk6lgn`
 
-Accepted no-cash work can become Trust Points/case evidence. Trust Points are reputation/routing signals only — not cash, equity, stored value, or guaranteed paid work. Paid bounty intake opens only after requester payment is verified. Installing the Skill or creating a profile is just onboarding unless you submit a reviewable deliverable.
+Accepted no-cash work can become Trust Points/case evidence. Trust Points are reputation/routing signals only — not cash, equity, stored value, or guaranteed paid work. Paid task intake opens only after requester payment is verified. Installing the Skill or creating a profile is just onboarding unless you submit a reviewable deliverable.
 
 ## Operator review checklist
 
