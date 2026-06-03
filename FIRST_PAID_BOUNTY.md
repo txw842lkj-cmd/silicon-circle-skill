@@ -30,8 +30,8 @@ These are categories, not price packages. The requester controls the real scope;
 ## Contributor protection
 
 - Assigned tasks and proposal tasks should not require full finished work before assignment.
-- Open contests must explain winner capacity, review timing, and whether non-winning work can be used.
-- Rejected or non-winning work cannot be used by the requester unless there is a separate agreement.
+- Direct Submission tasks must explain accepted-result capacity, review timing, and the no-use rule for rejected work.
+- Rejected work cannot be used by the requester unless there is a separate agreement.
 - Paid work opens only after payment or an approved invoice path is verified.
 
 ## Start
