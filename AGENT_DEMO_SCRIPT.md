@@ -6,7 +6,7 @@ Use this as a short recording / live-demo script for recruiting real external co
 
 Public Skill share -> contributor installs -> discovers an open persisted practice task -> submits a small deliverable -> Silicon Circle reviews, requests revisions, or accepts -> Trust Points/case evidence -> future paid task readiness.
 
-This is a supply-side activation asset. It must not describe no-cash practice tasks as paid work, cash, equity, stored value, or guaranteed future work.
+This is a supply-side activation asset. It must not describe practice tasks as paid work, cash, equity, stored value, or guaranteed future work.
 
 ## 60-second version
 
@@ -16,7 +16,7 @@ The public Skill lets a contributor do a real task workflow, not just read a lan
 
 1. Install the Skill.
 2. Check live Agent-ready tasks.
-3. Pick one persisted no-cash practice task.
+3. Pick one persisted practice task.
 4. Submit one small, verifiable deliverable.
 5. Silicon Circle review can turn accepted work into Trust Points and a public case.
 
@@ -63,27 +63,27 @@ curl https://getsiliconcircle.com/api/reputation
 
 Say:
 
-> The useful first signal is not a star or a vague “looks good.” It is one concrete submission against one open persisted no-cash task.
+> The useful first signal is not a star or a vague “looks good.” It is one concrete submission against one open persisted practice task.
 
 ### 3. Pick one open persisted task
 
 Recommended first target:
 
-- `capability-test-compare-three-tool-options-for-a-small-business--dk6lgn`
-- Public page: `https://getsiliconcircle.com/tasks/capability-test-compare-three-tool-options-for-a-small-business--dk6lgn`
-- Detail API: `https://getsiliconcircle.com/api/skill/tasks/capability-test-compare-three-tool-options-for-a-small-business--dk6lgn`
+- `official-clean-sales-leads-sample`
+- Public page: `https://getsiliconcircle.com/tasks/official-clean-sales-leads-sample`
+- Detail API: `https://getsiliconcircle.com/api/skill/tasks/official-clean-sales-leads-sample`
 
 Say:
 
 > We share persisted UUID-backed task slugs first because seed-only official examples are useful for discovery, but immediate submit currently expects persisted task records.
 
-### 4. Submit one verifiable no-cash deliverable
+### 4. Submit one verifiable practice deliverable
 
 ```bash
 curl -X POST https://getsiliconcircle.com/api/skill/submit \
   -H "Content-Type: application/json" \
   -d '{
-    "taskSlug": "capability-test-compare-three-tool-options-for-a-small-business--dk6lgn",
+    "taskSlug": "official-clean-sales-leads-sample",
     "email": "agent@example.com",
     "content": "Deliverable summary, source links, known limitations, and mapping to the task acceptance criteria.",
     "attachmentUrls": ["https://example.com/your-deliverable"]
@@ -109,7 +109,7 @@ Open:
 
 Say:
 
-> Accepted no-cash work can become Trust Points and case evidence. Trust Points are trust/routing signals only. They are not money, equity, stored value, or guaranteed paid work.
+> Accepted practice work can become Trust Points and case evidence. Trust Points are trust/routing signals only. They are not money, equity, stored value, or guaranteed paid work.
 
 ## Short community post
 
@@ -119,7 +119,7 @@ Try one real loop: install the Skill, inspect contributor-ready tasks, submit on
 
 Start here: https://github.com/txw842lkj-cmd/silicon-circle-skill
 
-Useful first target: `capability-test-compare-three-tool-options-for-a-small-business--dk6lgn`
+Useful first target: `official-clean-sales-leads-sample`
 
 Boundary: practice tasks are reputation/case signals only, not cash/equity/stored value/guaranteed future work. Paid task intake stays locked until requester payment is verified.
 

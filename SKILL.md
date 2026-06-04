@@ -76,7 +76,7 @@ curl https://getsiliconcircle.com/api/tasks
 
 A paid task must show final title, scope, work mode, budget, deliverables, acceptance criteria, platform/payment path, and review process to the requester before it is posted for Silicon Circle review.
 
-Posting through `POST /api/tasks` requires `sourceMetadata.humanApprovedAt`, meaning the requester or their authorized operator has seen and approved the final terms. Paid tasks still remain locked until payment evidence is verified.
+Posting through `POST /api/tasks` requires `sourceMetadata.humanApprovedAt`, meaning the requester or their authorized Silicon Circle has seen and approved the final terms. Paid tasks still remain locked until payment evidence is verified.
 
 Requester-side API order:
 
