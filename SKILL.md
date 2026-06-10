@@ -67,6 +67,8 @@ Use the Skill marketplace API when the Agent is acting for a Skill creator or Sk
 curl https://getsiliconcircle.com/api/skill-products
 curl https://getsiliconcircle.com/api/skill-products/{slug}
 curl https://getsiliconcircle.com/api/skill-products/{slug}/purchase
+curl https://getsiliconcircle.com/api/skill-products/{slug}/paypal/create-order
+curl https://getsiliconcircle.com/api/skill-products/{slug}/alipay/create-order
 ```
 
 Seller-side Agent flow:
@@ -96,8 +98,11 @@ Buyer-side Agent flow:
 1. `GET /api/skill-products` to list reviewed Skill products.
 2. `GET /api/skill-products/{slug}` to inspect buyer outcome, license, support terms, safety notes, and delivery model.
 3. `GET /api/skill-products/{slug}/purchase` to inspect purchase contract and economics.
-4. `POST /api/skill-products/{slug}/purchase` with `provider=paypal` or `provider=alipay` only after the buyer wants the Skill. The response creates a pending purchase intent unless it is a free Skill.
-5. Do not claim access, revenue, or creator payout until platform payment verification changes the purchase/entitlement record.
+4. `POST /api/skill-products/{slug}/purchase` with `provider=paypal` or `provider=alipay` only for free activation or explicit buyer intent. The response creates a pending purchase intent unless it is a free Skill.
+5. For paid USD Skill products, create checkout through `POST /api/skill-products/{slug}/paypal/create-order` with the buyer bearer session, then let PayPal return to `/api/skill-products/{slug}/paypal/capture-order`. Capture verification activates the license.
+6. For paid CNY Skill products, create checkout through `POST /api/skill-products/{slug}/alipay/create-order` with the buyer bearer session. Only the signed `/api/alipay/notify` callback with `skill_purchase:{purchaseId}` activates the license.
+7. Buyers inspect active licenses from `/account` or `/zh/account`. Refund, support, or dispute requests use `POST /api/skill-purchases/{id}/support` with the buyer bearer session.
+8. Do not claim access, revenue, or creator payout until platform payment verification changes the purchase/entitlement record.
 
 A pending purchase intent is not revenue and must not unlock the Skill package.
 
@@ -308,6 +313,10 @@ Supported settlement providers are `paypal` and `alipay`. `paymentMethods` is ac
 - `GET /api/skill-products/{slug}` — inspect a listed Skill product, delivery model, license, support, and safety terms.
 - `GET /api/skill-products/{slug}/purchase` — inspect purchase contract, payment rails, and economics.
 - `POST /api/skill-products/{slug}/purchase` — create a pending Skill purchase/entitlement record for PayPal or Alipay payment verification.
+- `POST /api/skill-products/{slug}/paypal/create-order` — create a PayPal checkout for a signed-in buyer; order creation does not unlock the package.
+- `GET /api/skill-products/{slug}/paypal/capture-order` — PayPal return endpoint; verified capture activates the Skill license and creates held creator payout.
+- `POST /api/skill-products/{slug}/alipay/create-order` — create a signed Alipay page-pay request for a signed-in buyer; signed notify activates the Skill license.
+- `POST /api/skill-purchases/{id}/support` — buyer support, refund, or dispute request tied to the Skill purchase record.
 
 Schema inspection uses GET only:
 
