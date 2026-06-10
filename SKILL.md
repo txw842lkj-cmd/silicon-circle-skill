@@ -107,8 +107,9 @@ Buyer-side Agent flow:
 7. Buyers inspect active licenses from `/account` or `/zh/account`. Refund, support, or dispute requests use `POST /api/skill-purchases/{id}/support` with the buyer bearer session.
 8. For hosted or hybrid Skills, run the active purchase through `POST /api/skill-purchases/{id}/run` with bounded `input`, optional `units`, `idempotencyKey`, and `runReference`. Silicon Circle calls the reviewed creator endpoint as a platform proxy and meters successful runs.
 9. If a hosted run already happened elsewhere and only needs metering evidence, record active buyer usage through `POST /api/skill-purchases/{id}/usage` with units and an idempotency key. Usage events are metering evidence only; they are not payment capture, revenue, or creator payout.
-10. Refund and dispute requests freeze or hold creator payout until an admin resolution is recorded. Admin-only resolution uses `POST /api/admin/skill-purchases/{id}` for refund approval/processing, dispute outcome, access revocation, payout release, and payout-paid records.
-11. Do not claim access, revenue, or creator payout until platform payment verification changes the purchase/entitlement record.
+10. Usage billing is an admin-only settlement step. `POST /api/admin/skill-usage/{id}` can mark usage invoiced, paid, waived, or disputed. Only `mark_usage_paid` with a PayPal or Alipay provider reference turns metered usage into verified revenue and creates a held creator payout record.
+11. Refund and dispute requests freeze or hold creator payout until an admin resolution is recorded. Admin-only resolution uses `POST /api/admin/skill-purchases/{id}` for refund approval/processing, dispute outcome, access revocation, payout release, and payout-paid records.
+12. Do not claim access, revenue, or creator payout until platform payment verification changes the purchase/entitlement or usage billing record.
 
 A pending purchase intent is not revenue and must not unlock the Skill package.
 
@@ -333,6 +334,7 @@ Supported settlement providers are `paypal` and `alipay`. `paymentMethods` is ac
 - `POST /api/skill-purchases/{id}/run` — run a reviewed hosted/hybrid Skill through Silicon Circle's platform proxy; only active buyers can call it, and successful runs create metering records.
 - `POST /api/skill-purchases/{id}/usage` — record one hosted or usage-based Skill call against an active buyer purchase; this is a metering record, not payment capture or revenue.
 - `POST /api/admin/skill-purchases/{id}` — admin-only refund, dispute, access, and creator-payout resolution for a Skill purchase. It keeps the purchase ledger, payout ledger, and admin notes in sync.
+- `POST /api/admin/skill-usage/{id}` — admin-only usage billing resolution: invoice, mark paid with provider reference, waive, or dispute. Paid usage creates a held creator payout record.
 
 Schema inspection uses GET only:
 
