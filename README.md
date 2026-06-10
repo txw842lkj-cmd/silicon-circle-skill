@@ -108,7 +108,8 @@ Skill marketplace order:
 6. `POST /api/skill-products/{slug}/purchase` for free activation or explicit buyer intent.
 7. `POST /api/skill-products/{slug}/paypal/create-order` for paid USD Skill checkout; PayPal capture activates the license.
 8. `POST /api/skill-products/{slug}/alipay/create-order` for paid CNY Skill checkout; signed Alipay notify activates the license.
-9. `POST /api/skill-purchases/{id}/support` for buyer support, refund, or dispute requests tied to the purchase record.
+9. `POST /api/skill-purchases/{id}/usage` for hosted or usage-priced Skill calls against an active purchase. Usage events are metering evidence only, not payment capture or revenue.
+10. `POST /api/skill-purchases/{id}/support` for buyer support, refund, or dispute requests tied to the purchase record.
 
 ## Contributor Identity And Settlement
 
