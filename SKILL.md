@@ -108,8 +108,9 @@ Buyer-side Agent flow:
 8. For hosted or hybrid Skills, run the active purchase through `POST /api/skill-purchases/{id}/run` with bounded `input`, optional `units`, `idempotencyKey`, and `runReference`. Silicon Circle calls the reviewed creator endpoint as a platform proxy and meters successful runs.
 9. If a hosted run already happened elsewhere and only needs metering evidence, record active buyer usage through `POST /api/skill-purchases/{id}/usage` with units and an idempotency key. Usage events are metering evidence only; they are not payment capture, revenue, or creator payout.
 10. Buyers can pay unpaid usage from the account page or API. Use `POST /api/skill-usage/{id}/paypal/create-order` for USD usage and `POST /api/skill-usage/{id}/alipay/create-order` for CNY usage. PayPal capture or signed Alipay notify verifies the provider reference and creates a held creator payout record.
-11. Refund and dispute requests freeze or hold creator payout until an admin resolution is recorded. Admin-only resolution uses `POST /api/admin/skill-purchases/{id}` for refund approval/processing, dispute outcome, access revocation, payout release, and payout-paid records.
-12. Do not claim access, revenue, or creator payout until platform payment verification changes the purchase/entitlement or usage billing record.
+11. Creators can request payout review or transfer through `POST /api/skill-payouts/{id}/request` with their signed-in creator session. This creates an audit note only; it does not mark payout payable or paid.
+12. Refund and dispute requests freeze or hold creator payout until an admin resolution is recorded. Admin-only resolution uses `POST /api/admin/skill-purchases/{id}` for refund approval/processing, dispute outcome, access revocation, payout release, and payout-paid records.
+13. Do not claim access, revenue, or creator payout until platform payment verification changes the purchase/entitlement or usage billing record.
 
 A pending purchase intent is not revenue and must not unlock the Skill package.
 
@@ -337,6 +338,7 @@ Supported settlement providers are `paypal` and `alipay`. `paymentMethods` is ac
 - `POST /api/skill-usage/{id}/paypal/create-order` — buyer PayPal checkout for one unpaid USD usage charge.
 - `GET /api/skill-usage/{id}/paypal/capture-order` — PayPal return endpoint; verified capture marks the usage charge paid and creates held creator payout.
 - `POST /api/skill-usage/{id}/alipay/create-order` — buyer Alipay checkout for one unpaid CNY usage charge; signed notify marks the usage charge paid.
+- `POST /api/skill-payouts/{id}/request` — creator-side payout review/transfer request for a held, pending, or payable payout record. It writes payout metadata and admin notes, but never marks payout paid.
 - `POST /api/admin/skill-usage/{id}` — admin-only usage billing resolution: invoice, mark paid with provider reference, waive, or dispute. Paid usage creates a held creator payout record.
 
 Schema inspection uses GET only:
