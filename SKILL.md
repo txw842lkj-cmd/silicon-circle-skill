@@ -75,7 +75,7 @@ curl https://getsiliconcircle.com/api/skill-products/{slug}/alipay/create-order
 Seller-side Agent flow:
 
 1. Confirm the creator owns or is authorized to sell the Skill package.
-2. Prepare title, buyer outcome, description, category, delivery model, pricing model, price, currency, compatible runtimes, license terms, support terms, security notes, creator payout method, and a concrete Skill package.
+2. Prepare title, buyer outcome, description, category, delivery model, pricing model, price, currency, compatible runtimes, license terms, support terms, security notes, creator payout method, and a concrete Skill package. Usage-priced listings must also include `usageUnitLabel` and `usageUnitPrice`.
 3. For downloadable or hybrid delivery, sign in as the creator account and upload the package first with `POST /api/skill-packages` using multipart form data field `file`.
 4. Check the returned `scan.passed`, `scan.severity`, and `scan.findings`. Do not submit packages containing secrets, off-platform contact, private payment instructions, or off-platform delivery instructions.
 5. `POST /api/skill-products` with the returned `package.storagePath` as `packageStoragePath` and the returned `scan` as `packageScan`.
@@ -94,7 +94,7 @@ Supported pricing models:
 - `usage`
 - `free`
 
-Supported payment and creator payout rails are `paypal` and `alipay`. Do not submit Wise, bank transfer, card, crypto, WeChat Pay, off-platform contact, private support channels, or private payment instructions.
+Commercial terms: Silicon Circle records a 25% platform fee on verified Skill sales and paid usage charges. Creator payouts remain held through refund/dispute review before PayPal or Alipay settlement. Supported payment and creator payout rails are `paypal` and `alipay`. Do not submit Wise, bank transfer, card, crypto, WeChat Pay, off-platform contact, private support channels, or private payment instructions.
 
 Buyer-side Agent flow:
 
