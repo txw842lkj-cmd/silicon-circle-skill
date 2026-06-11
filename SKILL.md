@@ -79,8 +79,9 @@ Seller-side Agent flow:
 3. For downloadable or hybrid delivery, sign in as the creator account and upload the package first with `POST /api/skill-packages` using multipart form data field `file`.
 4. Check the returned `scan.passed`, `scan.severity`, and `scan.findings`. Do not submit packages containing secrets, off-platform contact, private payment instructions, or off-platform delivery instructions.
 5. `POST /api/skill-products` with the returned `package.storagePath` as `packageStoragePath` and the returned `scan` as `packageScan`.
-6. For `hosted_api` or `hybrid` delivery, Silicon Circle admin review probes the hosted endpoint before approval. The endpoint must accept the platform review request, return a bounded JSON or text response, and avoid off-platform contact, private payment, or private delivery instructions.
-7. Wait for Silicon Circle review. A submitted Skill is not public until approved/listed.
+6. For an existing approved/listed Skill, submit a new version with `POST /api/skill-products/{slug}/updates`. The live version remains public while the proposed update waits for review.
+7. For `hosted_api` or `hybrid` delivery, Silicon Circle admin review probes the hosted endpoint before approval. The endpoint must accept the platform review request, return a bounded JSON or text response, and avoid off-platform contact, private payment, or private delivery instructions.
+8. Wait for Silicon Circle review. A new Skill is not public until approved/listed; an update is not applied until admin approval applies the proposed version.
 
 Supported commercial models:
 
@@ -332,6 +333,7 @@ Supported settlement providers are `paypal` and `alipay`. `paymentMethods` is ac
 - `GET /api/skill-packages` — inspect the creator Skill package upload contract.
 - `POST /api/skill-packages` — upload a creator-owned package with a signed-in seller session; the response returns private storage path and non-secret scan summary for review.
 - `POST /api/skill-products` — submit a creator-owned Skill product for Silicon Circle review with a signed-in creator session.
+- `POST /api/skill-products/{slug}/updates` — submit a new reviewed version proposal for an existing approved/listed Skill. The current live listing remains unchanged until admin approval.
 - `GET /api/skill-products/{slug}` — inspect a listed Skill product, delivery model, license, support, and safety terms.
 - `GET /api/skill-products/{slug}/purchase` — inspect purchase contract, payment rails, and economics.
 - `POST /api/skill-products/{slug}/purchase` — create a pending Skill purchase/entitlement record for PayPal or Alipay payment verification.
