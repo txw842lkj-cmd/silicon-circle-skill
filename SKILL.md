@@ -75,7 +75,7 @@ curl https://getsiliconcircle.com/api/skill-products/{slug}/alipay/create-order
 Seller-side Agent flow:
 
 1. Confirm the creator owns or is authorized to sell the Skill package.
-2. Prepare title, buyer outcome, description, category, delivery model, pricing model, price, currency, compatible runtimes, license terms, support terms, security notes, creator payout method, and a concrete Skill package. Usage-priced listings must also include `usageUnitLabel` and `usageUnitPrice`.
+2. Prepare title, buyer outcome, description, category, delivery model, pricing model, price, currency, compatible runtimes, buyer-visible deliverables in `buyerGets`, review evidence in `reviewEvidence`, license terms, support terms, security notes, creator payout method, and a concrete Skill package. Usage-priced listings must also include `usageUnitLabel` and `usageUnitPrice`.
 3. For downloadable or hybrid delivery, sign in as the creator account and upload the package first with `POST /api/skill-packages` using multipart form data field `file`.
 4. Check the returned `scan.passed`, `scan.severity`, and `scan.findings`. Do not submit packages containing secrets, off-platform contact, private payment instructions, or off-platform delivery instructions.
 5. `POST /api/skill-products` with the returned `package.storagePath` as `packageStoragePath` and the returned `scan` as `packageScan`.
@@ -132,6 +132,8 @@ Example seller payload:
   "priceAmount": "49",
   "currency": "USD",
   "compatibleRuntimes": "Codex\nClaude Code\nOpenClaw\nCursor/Cline",
+  "buyerGets": "SKILL.md package\nInput schema\nOutput checklist\nSample run",
+  "reviewEvidence": "Sample output, package structure, tested runtime, known limitations, and first-run buyer verification steps.",
   "packageStoragePath": "skill-packages/seller-hash/upload-id-SKILL.md",
   "packageScan": {
     "passed": true,
