@@ -111,9 +111,10 @@ Buyer-side Agent flow:
 10. If a hosted run already happened elsewhere and only needs metering evidence, record active buyer usage through `POST /api/skill-purchases/{id}/usage` with units and an idempotency key. Usage events are metering evidence only, not payment capture, revenue, or creator payout.
 11. Buyers can pay unpaid usage from the account page or API. Use `POST /api/skill-usage/{id}/paypal/create-order` for USD usage and `POST /api/skill-usage/{id}/alipay/create-order` for CNY usage. PayPal capture or signed Alipay notify verifies the provider reference and creates a held creator payout record.
 12. Creators inspect seller records through `GET /api/account/overview` with their signed-in creator session. Use `skills.sales` for the per-sale ledger, `skills.payouts` for settlement records and payout receipt metadata such as `creatorPayoutPayableAt`, `creatorPayoutPaidAt`, and `creatorPayoutProviderReference`, `skills.usage` for package access audits plus hosted usage events, and `skills.sellerSummary` for totals.
-13. Creators can request payout review or transfer through `POST /api/skill-payouts/{id}/request` with their signed-in creator session. This creates an audit note only; it does not mark payout payable or paid.
-14. Refund and dispute requests freeze or hold creator payout until an admin resolution is recorded. Admin-only resolution uses `POST /api/admin/skill-purchases/{id}` for refund approval/processing, dispute outcome, access revocation, payout release, and payout-paid records.
-15. Do not claim access, revenue, or creator payout until platform payment verification changes the purchase/entitlement or usage billing record.
+13. Creators answer buyer support, refund, or dispute requests through `POST /api/skill-purchases/{id}/support` with `action=creator_response`. The creator must be the product author; responses stay attached to the purchase support trail.
+14. Creators can request payout review or transfer through `POST /api/skill-payouts/{id}/request` with their signed-in creator session. This creates an audit note only; it does not mark payout payable or paid.
+15. Refund and dispute requests freeze or hold creator payout until an admin resolution is recorded. Admin-only resolution uses `POST /api/admin/skill-purchases/{id}` for refund approval/processing, dispute outcome, access revocation, payout release, and payout-paid records.
+16. Do not claim access, revenue, or creator payout until platform payment verification changes the purchase/entitlement or usage billing record.
 
 A pending purchase intent is not revenue and must not unlock the Skill package.
 

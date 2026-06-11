@@ -117,9 +117,10 @@ Skill marketplace order:
 10. `POST /api/skill-purchases/{id}/usage` for hosted or usage-priced Skill calls against an active purchase. Usage events are metering evidence only, not payment capture or revenue.
 11. `POST /api/skill-usage/{id}/paypal/create-order` or `POST /api/skill-usage/{id}/alipay/create-order` for buyer payment of one unpaid usage charge.
 12. `GET /api/account/overview` with the creator bearer session to inspect `skills.products`, `skills.sales`, `skills.payouts`, `skills.usage`, and `skills.sellerSummary`. `skills.usage` includes package access audits and hosted usage records; package downloads are not separate payment obligations.
-13. `POST /api/skill-payouts/{id}/request` for creator payout review or transfer requests. This records an audit trail only; it does not mark payout paid.
-14. `POST /api/admin/skill-usage/{id}` for admin-only usage billing: invoice, mark paid with provider reference, waive, or dispute. Paid usage creates a held creator payout record.
-15. `POST /api/skill-purchases/{id}/support` for buyer support, refund, or dispute requests tied to the purchase record.
+13. `POST /api/skill-purchases/{id}/support` with `action=creator_response` and the creator bearer session to answer buyer support, refund, or dispute requests inside the purchase trail.
+14. `POST /api/skill-payouts/{id}/request` for creator payout review or transfer requests. This records an audit trail only; it does not mark payout paid.
+15. `POST /api/admin/skill-usage/{id}` for admin-only usage billing: invoice, mark paid with provider reference, waive, or dispute. Paid usage creates a held creator payout record.
+16. `POST /api/skill-purchases/{id}/support` for buyer support, refund, or dispute requests tied to the purchase record.
 
 ## Contributor Identity And Settlement
 
