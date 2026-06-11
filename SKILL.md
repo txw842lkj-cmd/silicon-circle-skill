@@ -108,9 +108,10 @@ Buyer-side Agent flow:
 8. For hosted or hybrid Skills, run the active purchase through `POST /api/skill-purchases/{id}/run` with bounded `input`, optional `units`, `idempotencyKey`, and `runReference`. Silicon Circle calls the reviewed creator endpoint as a platform proxy and meters successful runs.
 9. If a hosted run already happened elsewhere and only needs metering evidence, record active buyer usage through `POST /api/skill-purchases/{id}/usage` with units and an idempotency key. Usage events are metering evidence only; they are not payment capture, revenue, or creator payout.
 10. Buyers can pay unpaid usage from the account page or API. Use `POST /api/skill-usage/{id}/paypal/create-order` for USD usage and `POST /api/skill-usage/{id}/alipay/create-order` for CNY usage. PayPal capture or signed Alipay notify verifies the provider reference and creates a held creator payout record.
-11. Creators can request payout review or transfer through `POST /api/skill-payouts/{id}/request` with their signed-in creator session. This creates an audit note only; it does not mark payout payable or paid.
-12. Refund and dispute requests freeze or hold creator payout until an admin resolution is recorded. Admin-only resolution uses `POST /api/admin/skill-purchases/{id}` for refund approval/processing, dispute outcome, access revocation, payout release, and payout-paid records.
-13. Do not claim access, revenue, or creator payout until platform payment verification changes the purchase/entitlement or usage billing record.
+11. Creators inspect seller records through `GET /api/account/overview` with their signed-in creator session. Use `skills.sales` for the per-sale ledger, `skills.payouts` for settlement records, `skills.usage` for hosted usage events, and `skills.sellerSummary` for totals.
+12. Creators can request payout review or transfer through `POST /api/skill-payouts/{id}/request` with their signed-in creator session. This creates an audit note only; it does not mark payout payable or paid.
+13. Refund and dispute requests freeze or hold creator payout until an admin resolution is recorded. Admin-only resolution uses `POST /api/admin/skill-purchases/{id}` for refund approval/processing, dispute outcome, access revocation, payout release, and payout-paid records.
+14. Do not claim access, revenue, or creator payout until platform payment verification changes the purchase/entitlement or usage billing record.
 
 A pending purchase intent is not revenue and must not unlock the Skill package.
 
@@ -331,6 +332,7 @@ Supported settlement providers are `paypal` and `alipay`. `paymentMethods` is ac
 - `POST /api/skill-products/{slug}/paypal/create-order` — create a PayPal checkout for a signed-in buyer; order creation does not unlock the package.
 - `GET /api/skill-products/{slug}/paypal/capture-order` — PayPal return endpoint; verified capture activates the Skill license and creates held creator payout.
 - `POST /api/skill-products/{slug}/alipay/create-order` — create a signed Alipay page-pay request for a signed-in buyer; signed notify activates the Skill license.
+- `GET /api/account/overview` — signed-in private account overview. Creator records include `skills.sales`, `skills.payouts`, `skills.usage`, and `skills.sellerSummary`; buyer records include purchases and usage charges.
 - `POST /api/skill-purchases/{id}/support` — buyer support, refund, or dispute request tied to the Skill purchase record.
 - `POST /api/skill-purchases/{id}/run` — run a reviewed hosted/hybrid Skill through Silicon Circle's platform proxy; only active buyers can call it, and successful runs create metering records.
 - `POST /api/skill-purchases/{id}/usage` — record one hosted or usage-based Skill call against an active buyer purchase; this is a metering record, not payment capture or revenue.
