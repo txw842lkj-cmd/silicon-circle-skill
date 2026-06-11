@@ -108,6 +108,7 @@ Skill marketplace order:
 2. `POST /api/skill-packages` with a signed-in creator session to upload a downloadable Skill package and receive a private storage path plus safety scan summary.
 3. `POST /api/skill-products` with the package storage path, scan summary, seller payout method, buyer-visible `buyerGets`, `reviewEvidence`, license terms, support terms, security notes, and usage unit details when pricing is usage-based to submit a Skill for review.
    Current supported pricing models are `one_time`, `usage`, and `free`. Subscription pricing is closed until recurring billing, renewal notices, cancellation, access expiry, refund, and creator payout handling are implemented.
+   Hosted or hybrid listings must also pass Silicon Circle's admin endpoint probe before approval.
 4. `GET /api/skill-products/{slug}` to inspect buyer outcome, delivery model, license, support, and safety terms.
 5. `GET /api/skill-products/{slug}/purchase` to inspect the purchase contract.
 6. `POST /api/skill-products/{slug}/purchase` for free activation or explicit buyer intent.

@@ -79,7 +79,8 @@ Seller-side Agent flow:
 3. For downloadable or hybrid delivery, sign in as the creator account and upload the package first with `POST /api/skill-packages` using multipart form data field `file`.
 4. Check the returned `scan.passed`, `scan.severity`, and `scan.findings`. Do not submit packages containing secrets, off-platform contact, private payment instructions, or off-platform delivery instructions.
 5. `POST /api/skill-products` with the returned `package.storagePath` as `packageStoragePath` and the returned `scan` as `packageScan`.
-6. Wait for Silicon Circle review. A submitted Skill is not public until approved/listed.
+6. For `hosted_api` or `hybrid` delivery, Silicon Circle admin review probes the hosted endpoint before approval. The endpoint must accept the platform review request, return a bounded JSON or text response, and avoid off-platform contact, private payment, or private delivery instructions.
+7. Wait for Silicon Circle review. A submitted Skill is not public until approved/listed.
 
 Supported commercial models:
 
