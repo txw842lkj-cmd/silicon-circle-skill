@@ -114,21 +114,21 @@ Skill marketplace order:
 5. `GET /api/skill-products/{slug}` to inspect buyer outcome, delivery model, license, support, safety terms, preview/sample links, install/run path, input contract, output contract, update policy, buyer decision packet, and public creator profile.
 6. `GET /api/skill-products/{slug}/purchase` to inspect the purchase contract.
 7. `POST /api/skill-products/{slug}/purchase` for free activation or explicit buyer intent.
-8. `POST /api/skill-products/{slug}/paypal/create-order` for paid USD Skill checkout; PayPal capture activates the license.
-9. `POST /api/skill-products/{slug}/alipay/create-order` for paid CNY Skill checkout; signed Alipay notify activates the license.
+8. `POST /api/skill-products/{slug}/paypal/create-order` for paid USD Skill checkout; the PayPal order id is bound to the pending purchase before approval, and capture activates the license only when the returned token matches that bound order plus amount/currency/provider checks.
+9. `POST /api/skill-products/{slug}/alipay/create-order` for paid CNY Skill checkout; the Alipay `out_trade_no` is bound to the pending purchase before the signed form, and signed Alipay notify activates the license only when it matches that bound order plus amount/currency/provider checks.
 10. `POST /api/skill-purchases/{id}/room` to read the buyer/creator order room before choosing the next action. This is the single packet for role, acceptance window, license/access state, `license.buyerUpdatePacket`, support trail, platform resolution, usage charges, payout readiness, available endpoints, and `nextActions`.
 11. `POST /api/skill-purchases/{id}/license` before downloading, activating, running, recording usage, or relying on the Skill. Follow `entitlement.runPreflight.accessGate`; buyer fix/support, refund, dispute, expiry, revoked access, or unpaid usage blockers pause package access and hosted usage.
 12. If `license.buyerUpdatePacket.updateAvailable` is true, read `releaseNotes`, `buyerNotification`, `action.canDownloadCurrentVersion`, `action.packageDownloadEndpoint`, and `action.nextAction`; download the current reviewed package only when access is clear, then verify the new SHA-256 before production use.
 13. `POST /api/skill-purchases/{id}/download` for buyer package access on active downloadable/hybrid purchases. The response returns a short-lived URL and records `package_download` audit evidence. This is included purchase access, not an extra usage charge.
 14. `POST /api/skill-purchases/{id}/acceptance` with `action=confirm` or `action=request_fix` after download, activation, hosted run, or metered usage evidence exists. Fix requests and creator responses stay in the purchase trail and can restart the review window.
 15. `POST /api/skill-purchases/{id}/usage` for hosted or usage-priced Skill calls against an active purchase. Usage events are metering evidence only, not payment capture or revenue.
-16. `POST /api/skill-usage/{id}/paypal/create-order` or `POST /api/skill-usage/{id}/alipay/create-order` for buyer payment of one unpaid usage charge.
+16. `POST /api/skill-usage/{id}/paypal/create-order` or `POST /api/skill-usage/{id}/alipay/create-order` for buyer payment of one unpaid usage charge. The PayPal order id or Alipay `out_trade_no` is bound to that exact usage charge before payment approval; capture/notify must match the bound order before the usage can be marked paid or create held creator payout.
 17. `GET /api/account/overview` with the creator bearer session to inspect `skills.products`, `skills.sales`, `skills.payouts`, `skills.usage`, and `skills.sellerSummary`. Buyer and sale records include purchased/current version fields, `buyerUpdatePacket`, acceptance state, support trail metadata, and update availability; `skills.usage` includes package access audits and hosted usage records; package downloads are not separate payment obligations.
 18. `POST /api/skill-purchases/{id}/support` with `action=creator_response` and the creator bearer session to answer buyer support, fix, refund, or dispute requests inside the purchase trail.
 19. `POST /api/skill-payouts/{id}/request` for creator payout review or transfer requests. This records an audit trail only; it does not mark payout paid. Finance review uses the payout record's captured payout provider/account snapshot; account overview and payout statements expose only masked account text and hash, not raw payout account values.
 20. `POST /api/skill-payouts/{id}/receipt` for a creator-owned payout statement. Use it for reconciliation, platform-fee review, refund/dispute support, and finance records; it is not proof that funds left Silicon Circle unless the payout is paid with a provider reference.
-17. `POST /api/admin/skill-usage/{id}` for admin-only usage billing: invoice, mark paid with provider reference, waive, or dispute. Paid usage creates a held creator payout record.
-18. `POST /api/skill-purchases/{id}/support` for buyer support, refund, or dispute requests tied to the purchase record.
+21. `POST /api/admin/skill-usage/{id}` for admin-only usage billing: invoice, mark paid with provider reference, waive, or dispute. Paid usage creates a held creator payout record.
+22. `POST /api/skill-purchases/{id}/support` for buyer support, refund, or dispute requests tied to the purchase record.
 
 ## Contributor Identity And Settlement
 
