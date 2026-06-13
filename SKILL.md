@@ -75,7 +75,7 @@ curl https://getsiliconcircle.com/api/skill-products/{slug}/alipay/create-order
 Seller-side Agent flow:
 
 1. Confirm the creator owns or is authorized to sell the Skill package.
-2. Prepare title, buyer outcome, description, category, delivery model, pricing model, price, currency, compatible runtimes, buyer-visible deliverables in `buyerGets`, review evidence in `reviewEvidence`, license terms, support terms, security notes, creator payout method, and a concrete Skill package. Usage-priced listings must also include `usageUnitLabel` and `usageUnitPrice`.
+2. Prepare title, buyer outcome, description, category, delivery model, pricing model, price, currency, compatible runtimes, buyer-visible deliverables in `buyerGets`, buyer preview/sample links in `previewUrls` or `demoUrl`, install/run instructions in `installInstructions`, accepted input contract in `inputSchema`, promised output contract in `outputContract`, buyer input requirements in `buyerRequirements`, first-run verification steps in `firstRunVerification`, support/refund trigger rules in `refundTriggers`, defect-support duration in `supportWindowDays`, update policy in `updatePolicy`, review evidence in `reviewEvidence`, license terms, support terms, security notes, creator payout method, and a concrete Skill package. Usage-priced listings must also include `usageUnitLabel` and `usageUnitPrice`.
 3. For downloadable or hybrid delivery, sign in as the creator account and upload the package first with `POST /api/skill-packages` using multipart form data field `file`.
 4. Check the returned `scan.passed`, `scan.severity`, and `scan.findings`. Do not submit packages containing secrets, off-platform contact, private payment instructions, or off-platform delivery instructions.
 5. `POST /api/skill-products` with the returned `package.storagePath` as `packageStoragePath` and the returned `scan` as `packageScan`.
@@ -102,7 +102,7 @@ Commercial terms: Silicon Circle records a 25% platform fee on verified Skill sa
 Buyer-side Agent flow:
 
 1. `GET /api/skill-products` to list reviewed Skill products.
-2. `GET /api/skill-products/{slug}` to inspect buyer outcome, license, support terms, safety notes, and delivery model.
+2. `GET /api/skill-products/{slug}` to inspect buyer outcome, license, support terms, safety notes, delivery model, buyer decision packet, and public creator profile. Before paying, inspect the listing's buyer proof like a mature digital-product marketplace: preview/sample links, install/run path, input contract, output contract, support window, update policy, refund/support triggers, license scope, and first-run verification.
 3. `GET /api/skill-products/{slug}/purchase` to inspect purchase contract and economics.
 4. `POST /api/skill-products/{slug}/purchase` with `provider=paypal` or `provider=alipay` only for free activation or explicit buyer intent. The response creates a pending purchase intent unless it is a free Skill.
 5. For paid USD Skill products, create checkout through `POST /api/skill-products/{slug}/paypal/create-order` with the buyer bearer session, then let PayPal return to `/api/skill-products/{slug}/paypal/capture-order`. Capture verification activates the license.
@@ -137,6 +137,15 @@ Example seller payload:
   "currency": "USD",
   "compatibleRuntimes": "Codex\nClaude Code\nOpenClaw\nCursor/Cline",
   "buyerGets": "SKILL.md package\nInput schema\nOutput checklist\nSample run",
+  "previewUrls": "https://example.com/sample-output\nhttps://example.com/docs",
+  "installInstructions": "After verified purchase, download the package from the purchase record, place SKILL.md in the Agent-readable skills directory, and run the sample input before production use. Hosted access must be called through Silicon Circle's order-room endpoint.",
+  "inputSchema": "Accepted inputs: task goal, source files or links, runtime context, constraints, sample data, and explicit exclusions. Do not submit secrets, private credentials, private payment details, or off-platform contact.",
+  "outputContract": "Promised output: structured summary, required fields, evidence links, failure notes, limitation notes, and handoff instructions in the format described by the package.",
+  "buyerRequirements": "Buyer provides the target workflow, allowed input files, runtime context, constraints, and non-secret sample data. Do not send credentials, private keys, or off-platform contact details.",
+  "firstRunVerification": "Run the sample input first and confirm the output includes every promised section, clear failure messages, safe-use warnings, and the expected handoff format before production use.",
+  "refundTriggers": "Request support or refund review if verified buyers cannot access the package, documented first-run steps fail in a listed runtime, or promised output sections are missing after following the instructions.",
+  "supportWindowDays": 7,
+  "updatePolicy": "Material bug fixes and compatibility updates are submitted as reviewed product updates. Existing buyers keep their purchased version until the new version is approved and visible in the account library.",
   "reviewEvidence": "Sample output, package structure, tested runtime, known limitations, and first-run buyer verification steps.",
   "packageStoragePath": "skill-packages/seller-hash/upload-id-SKILL.md",
   "packageScan": {
@@ -332,9 +341,9 @@ Supported settlement providers are `paypal` and `alipay`. `paymentMethods` is ac
 - `GET /api/skill-products` — list reviewed Skill marketplace products and seller submission schema.
 - `GET /api/skill-packages` — inspect the creator Skill package upload contract.
 - `POST /api/skill-packages` — upload a creator-owned package with a signed-in seller session; the response returns private storage path and non-secret scan summary for review.
-- `POST /api/skill-products` — submit a creator-owned Skill product for Silicon Circle review with a signed-in creator session.
+- `POST /api/skill-products` — submit a creator-owned Skill product for Silicon Circle review with a signed-in creator session. Listings must include `previewUrls` or `demoUrl`, `installInstructions`, `inputSchema`, `outputContract`, `buyerRequirements`, `firstRunVerification`, `refundTriggers`, `supportWindowDays`, and `updatePolicy` so buyers know what they are buying, how to run it, what inputs are accepted, what outputs are promised, how updates work, and when to request support/refund/dispute review.
 - `POST /api/skill-products/{slug}/updates` — submit a new reviewed version proposal for an existing approved/listed Skill. The current live listing remains unchanged until admin approval.
-- `GET /api/skill-products/{slug}` — inspect a listed Skill product, delivery model, license, support, and safety terms.
+- `GET /api/skill-products/{slug}` — inspect a listed Skill product, delivery model, license, support, safety terms, buyer preview/sample links, install/run path, input contract, output contract, update policy, buyer decision packet, and public creator profile.
 - `GET /api/skill-products/{slug}/purchase` — inspect purchase contract, payment rails, and economics.
 - `POST /api/skill-products/{slug}/purchase` — create a pending Skill purchase/entitlement record for PayPal or Alipay payment verification.
 - `POST /api/skill-products/{slug}/paypal/create-order` — create a PayPal checkout for a signed-in buyer; order creation does not unlock the package.
