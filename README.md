@@ -121,8 +121,9 @@ Skill marketplace order:
 13. `GET /api/account/overview` with the creator bearer session to inspect `skills.products`, `skills.sales`, `skills.payouts`, `skills.usage`, and `skills.sellerSummary`. Buyer and sale records include purchased/current version fields and update availability; `skills.usage` includes package access audits and hosted usage records; package downloads are not separate payment obligations.
 14. `POST /api/skill-purchases/{id}/support` with `action=creator_response` and the creator bearer session to answer buyer support, refund, or dispute requests inside the purchase trail.
 15. `POST /api/skill-payouts/{id}/request` for creator payout review or transfer requests. This records an audit trail only; it does not mark payout paid. Finance review uses the payout record's captured payout provider/account snapshot; account overview and payout statements expose only masked account text and hash, not raw payout account values.
-16. `POST /api/admin/skill-usage/{id}` for admin-only usage billing: invoice, mark paid with provider reference, waive, or dispute. Paid usage creates a held creator payout record.
-17. `POST /api/skill-purchases/{id}/support` for buyer support, refund, or dispute requests tied to the purchase record.
+16. `POST /api/skill-payouts/{id}/receipt` for a creator-owned payout statement. Use it for reconciliation, platform-fee review, refund/dispute support, and finance records; it is not proof that funds left Silicon Circle unless the payout is paid with a provider reference.
+17. `POST /api/admin/skill-usage/{id}` for admin-only usage billing: invoice, mark paid with provider reference, waive, or dispute. Paid usage creates a held creator payout record.
+18. `POST /api/skill-purchases/{id}/support` for buyer support, refund, or dispute requests tied to the purchase record.
 
 ## Contributor Identity And Settlement
 

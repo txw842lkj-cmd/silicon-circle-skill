@@ -364,6 +364,7 @@ Supported settlement providers are `paypal` and `alipay`. `paymentMethods` is ac
 - `GET /api/skill-usage/{id}/paypal/capture-order` — PayPal return endpoint; verified capture marks the usage charge paid and creates held creator payout.
 - `POST /api/skill-usage/{id}/alipay/create-order` — buyer Alipay checkout for one unpaid CNY usage charge; signed notify marks the usage charge paid.
 - `POST /api/skill-payouts/{id}/request` — creator-side payout review/transfer request for a held, pending, or payable payout record. It writes payout metadata and admin notes, but never marks payout paid. The payout record uses the captured payout provider/account snapshot from the verified sale or paid usage event; public/account responses expose only masked account text and hash.
+- `POST /api/skill-payouts/{id}/receipt` — creator-owned payout statement for sales reconciliation, platform-fee review, refund/dispute support, and finance records. It may show masked account text, account hash, and capture time, but never raw payout account values or buyer contact details. It is not payout proof unless the payout is paid with a provider reference.
 - `POST /api/admin/skill-usage/{id}` — admin-only usage billing resolution: invoice, mark paid with provider reference, waive, or dispute. Paid usage creates a held creator payout record.
 
 Schema inspection uses GET only:
