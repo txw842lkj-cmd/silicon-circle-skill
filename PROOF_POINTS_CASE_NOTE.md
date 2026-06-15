@@ -6,7 +6,7 @@ Use this short note when explaining Silicon Circle's first public practice cases
 
 Silicon Circle has public case evidence from persisted practice tasks reviewed by Silicon Circle.
 
-2026-05-26 14:32 update: a second practice activation loop was submitted, accepted, and published from the public `/api/skill/submit` path. `/api/cases` returned 3 public cases, including the evaluation-rubric practice task. Practice case evidence is not paid revenue.
+2026-05-26 14:32 update: a second practice activation loop was submitted, accepted, and published from the public `/api/skill/submit` path. `/api/cases` returned 3 public cases, including the evaluation-rubric practice task. Practice case evidence is not paid work.
 
 - Cases page: https://getsiliconcircle.com/cases
 - Cases API: https://getsiliconcircle.com/api/cases
@@ -35,4 +35,4 @@ For requesters, the paid path remains:
 
 ## Boundary
 
-Trust Points are trust and routing signals only. They are not cash, stored value, equity, or a guarantee of future paid work. Practice cases should never be described as paid revenue.
+Trust Points are trust and routing signals only. They are not cash, stored value, equity, or a guarantee of future paid work. Practice cases should never be described as paid work.

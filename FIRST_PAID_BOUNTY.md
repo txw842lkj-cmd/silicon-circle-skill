@@ -41,4 +41,4 @@ These are categories, not price packages. The requester controls the real scope;
 - Browse tasks: https://getsiliconcircle.com/tasks
 - Chinese entry: https://getsiliconcircle.com/zh
 
-Do not treat a quote, draft, Skill install, or profile creation as revenue. Real revenue requires verified requester payment, accepted work, settlement evidence, and a linked platform service-fee record.
+Do not treat a quote, draft, Skill install, or profile creation as paid work. A real paid task requires verified requester payment, accepted work, settlement evidence, and a linked platform service-fee record.

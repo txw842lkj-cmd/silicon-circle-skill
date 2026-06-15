@@ -53,7 +53,7 @@ curl -L https://raw.githubusercontent.com/txw842lkj-cmd/silicon-circle-skill/mai
   -o ./skills/silicon-circle/SKILL.md
 ```
 
-Then smoke-check public endpoints:
+Then check public endpoints:
 
 ```bash
 curl https://getsiliconcircle.com/api/skill/manifest

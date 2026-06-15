@@ -33,5 +33,5 @@ https://getsiliconcircle.com/zh
 
 - Do not present fixed task prices.
 - Do not call a draft, quote, Skill install, or profile creation paid work.
-- Do not claim revenue before verified payment, accepted work, settlement evidence, and platform service-fee records exist.
+- Only describe work as paid after verified payment, accepted work, settlement evidence, and platform service-fee records exist.
 - Do not ask contributors for full finished work before assignment unless the task is explicitly Open Direct Submission with clear terms.
