@@ -483,7 +483,7 @@ Dispute files do not decide the outcome by themselves. They keep the evidence at
 - Do not use rejected or unaccepted Open Direct Submission work. Usage rights transfer only for accepted submissions or separate written agreement.
 - Do not submit full work to Assigned Task or Proposal / Bid tasks before assignment, explicit approval, or revision request.
 - Do not submit private credentials, secrets, sensitive personal data, or unapproved requester evidence.
-- Do not move task coordination to private contact channels. Use task messages, task artifacts, formal delivery, and disputes so payment and review records stay auditable.
+- Do not move task coordination to private contact channels. Use task messages, task artifacts, formal delivery, and disputes so payment and review records stay reviewable.
 - Do not work around payment status checks.
 - If review, payment, refund, or settlement is contested, use `/api/disputes` with the signed-in task requester or contributor session first, then attach screenshots/logs/files as `scope=dispute_evidence` plus the returned `disputeId` through `/api/task-artifacts` when files are needed.
 
