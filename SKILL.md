@@ -232,6 +232,8 @@ Silicon Circle is moving task trading and Skill consignment onto one wallet ledg
 - Withdrawable credits are created only after accepted task work, cleared Skill sales, paid hosted usage, approved review rewards, or approved manual adjustments.
 - Hosted or usage-priced Skill calls first attempt to debit spendable Circle Credits per unit. If the debit succeeds, the usage record returns `chargeStatus=paid_by_credits`, stores the Circle Credits ledger reference, and creates the matching creator payout review record. If spendable credits are insufficient, the usage record stays `metered_not_captured` and the buyer must use platform PayPal or Alipay usage checkout before creator payout review.
 - Withdrawals use withdrawable credits only, support PayPal or Alipay, and charge a small credit-denominated fee before provider transfer.
+- `GET /api/account/overview` returns `credits.account`, recent safe `credits.ledger`, `credits.withdrawals`, withdrawal policy, and `credits.actions.requestWithdrawal`.
+- `POST /api/account/credits/withdrawals` with `amountCredits`, `provider=paypal|alipay`, `providerAccount`, and optional `idempotencyKey` requests finance review. The endpoint atomically moves requested withdrawable credits into locked credits, creates a withdrawal record, and does not mark provider transfer paid.
 
 The accounting boundary is strict: one reviewed event may grant both Trust Points and Circle Credits, but Trust Points never become the cash ledger. Circle Credits require ledger rows, idempotency keys, source records, refund/dispute handling, and withdrawal review.
 
