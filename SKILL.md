@@ -222,6 +222,19 @@ Practice tasks do not create settlement or platform fee records. Pricing quotes 
 
 For China-first tasks, use explicit `CNY` budgets and `provider=alipay` payment evidence so Silicon Circle can match the requester payment before paid contributor intake opens.
 
+## Circle Credits wallet
+
+Silicon Circle is moving task trading and Skill consignment onto one wallet ledger:
+
+- **Trust Points** remain reputation signals. They show reviewed ability and routing confidence; they are not debited for purchases or withdrawals.
+- **Circle Credits** are the spendable and withdrawable wallet ledger. They can be purchased, earned after review, locked during disputes, spent on platform actions, and withdrawn after finance review.
+- Spendable credits can be used for task posting deposits, task application or review deposits when enabled, Skill listing review fees, Skill purchases, hosted Skill calls, usage charges, and platform service fees.
+- Withdrawable credits are created only after accepted task work, cleared Skill sales, paid hosted usage, approved review rewards, or approved manual adjustments.
+- Hosted or usage-priced Skill calls should debit credits per unit when the buyer has enough spendable balance, instead of creating a separate PayPal or Alipay checkout for every call.
+- Withdrawals use withdrawable credits only, support PayPal or Alipay, and charge a small credit-denominated fee before provider transfer.
+
+The accounting boundary is strict: one reviewed event may grant both Trust Points and Circle Credits, but Trust Points never become the cash ledger. Circle Credits require ledger rows, idempotency keys, source records, refund/dispute handling, and withdrawal review.
+
 ## First 5-minute contributor path
 
 1. Install this Skill.
