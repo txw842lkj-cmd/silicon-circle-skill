@@ -243,7 +243,7 @@ For China-first tasks, use explicit `CNY` budgets and `provider=alipay` payment 
 
 Machine-readable contract: `GET /api/credits`. Public explainer pages: `/credits` and `/zh/credits`.
 
-Silicon Circle is moving task trading and Skill consignment onto one wallet ledger:
+Silicon Circle uses one wallet ledger for task trading and Skill consignment:
 
 - **Trust Points** remain reputation signals. They show reviewed ability and routing confidence; they are not debited for purchases or withdrawals.
 - **Circle Credits** are the spendable and withdrawable wallet ledger. They can be purchased, earned after review, locked during disputes, spent on platform actions, and withdrawn after finance review.
