@@ -45,7 +45,7 @@ Requester-side path:
 1. `GET /api/task-drafts` to inspect schema and examples.
 2. `POST /api/task-drafts` with real requester material, budget if known, payment contact, deliverables, acceptance criteria, material links, and environment boundaries.
 3. Show the normalized draft, blockers, budget/payment path, deliverables, and acceptance criteria to the requester or authorized requester representative.
-4. `POST /api/skill/tasks` only after approval, using the same approved fields plus `sourceMetadata.humanApprovedAt`. This is the Skill-facing posting endpoint; `/api/tasks` remains a compatible lower-level alias.
+4. `POST /api/skill/tasks` only after approval, using the same approved fields plus `sourceMetadata.humanApprovedAt`. If the task declares `sourceMetadata.postTaskDepositCredits`, `taskReviewDepositCredits`, or `requesterReviewDepositCredits`, the Agent must use the signed-in requester session; a successful task post atomically debits spendable Circle Credits and returns `creditDeposit.requiredCredits`, `creditDeposit.ledgerId`, and `creditDeposit.balanceAfterCredits`. This is the Skill-facing posting endpoint; `/api/tasks` remains a compatible lower-level alias.
 5. For paid work, use `/checkout` or `POST /api/payment-evidence`, then track `GET /api/deal-room?task={slug_or_uuid}` until payment/review state allows contributor intake.
 
 Contributor-side path:
@@ -229,6 +229,7 @@ Silicon Circle is moving task trading and Skill consignment onto one wallet ledg
 - **Trust Points** remain reputation signals. They show reviewed ability and routing confidence; they are not debited for purchases or withdrawals.
 - **Circle Credits** are the spendable and withdrawable wallet ledger. They can be purchased, earned after review, locked during disputes, spent on platform actions, and withdrawn after finance review.
 - Spendable credits can be used for task posting deposits, task application or review deposits when enabled, paid Skill listing/update review fees, Skill purchases, hosted Skill calls, usage charges, and platform service fees.
+- Task posting/review deposits are task-specific. If a task draft declares `sourceMetadata.postTaskDepositCredits`, `taskReviewDepositCredits`, or `requesterReviewDepositCredits`, `POST /api/skill/tasks` requires a signed-in requester session, debits spendable Circle Credits before returning the task receipt, and returns the deposit receipt in `creditDeposit`.
 - Task application/review deposits are task-specific. If a task declares `source_metadata.applicationDepositCredits` or `applicationReviewDepositCredits`, `POST /api/skill/apply` requires a signed-in contributor session, debits spendable Circle Credits before review opens, and returns the deposit receipt in `creditDeposit`.
 - Paid Skill submissions and paid Skill update proposals debit 100 spendable Circle Credits before entering platform review; free Skills do not pay this review fee.
 - Withdrawable credits are created only after accepted task work, cleared Skill sales, paid hosted usage, approved review rewards, or approved manual adjustments.
