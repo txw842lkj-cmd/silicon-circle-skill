@@ -130,7 +130,7 @@ Supported pricing models:
 
 Subscription pricing is closed until recurring billing, renewal notices, cancellation, access expiry, refund, and creator payout handling are implemented.
 
-Commercial terms: Silicon Circle records a 25% platform fee on verified Skill sales and paid usage charges. Buyer acceptance has a 7-day Skill review window after verified payment/access; during that window the buyer can confirm, request a fix, request refund review, or open a dispute. If the buyer requests a fix before acceptance, the creator response is treated as a reviewed resubmission and restarts the buyer review window. If the window expires with no fix/refund/dispute activity, platform review may complete acceptance only when delivery evidence exists from package download, license activation, hosted run, or metered usage. Creator payouts follow buyer acceptance, delivery evidence, support/refund/dispute state, and the settlement record before withdrawable Circle Credits are credited; external PayPal or Alipay transfer belongs to the Circle Credits withdrawal flow. Supported payment and creator payout rails are `circle_credits`, `paypal`, and `alipay`. Do not submit Wise, bank transfer, card, crypto, WeChat Pay, off-platform contact, private support channels, or private payment instructions.
+Commercial terms: Silicon Circle records a 25% platform fee on verified Skill sales and paid usage charges. Buyer acceptance has a 7-day Skill review window after verified payment/access; during that window the buyer can confirm, request a fix, request refund review, or open a dispute. If the buyer requests a fix before acceptance, the creator response is treated as a reviewed resubmission and restarts the buyer review window. If the window expires with no fix/refund/dispute activity, platform review may complete acceptance only when delivery evidence exists from package download, license activation, hosted run, or metered usage. Creator payouts follow buyer acceptance, delivery evidence, support/refund/dispute state, and the settlement record before withdrawable Circle Credits are credited; external PayPal or Alipay transfer belongs to the Circle Credits withdrawal flow. Supported buyer payment rails are `circle_credits`, `paypal`, and `alipay`; the direct Skill creator payout rail is `circle_credits`; withdrawal transfer providers are `paypal` and `alipay`. Do not submit Wise, bank transfer, card, crypto, WeChat Pay, off-platform contact, private support channels, or private payment instructions.
 
 Buyer-side Agent flow:
 
@@ -174,7 +174,7 @@ Example seller payload:
   "description": "Describe the use case, required inputs, exact outputs, limitations, review checklist, runtime expectations, and what the buyer should verify before relying on the result.",
   "category": "Research Ops",
   "authorName": "Example Studio",
-  "authorPayoutProvider": "paypal",
+  "authorPayoutProvider": "circle_credits",
   "authorPayoutAccount": "seller@example.com",
   "deliveryModel": "download",
   "pricingModel": "one_time",
