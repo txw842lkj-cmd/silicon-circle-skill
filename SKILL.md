@@ -237,7 +237,7 @@ Silicon Circle is moving task trading and Skill consignment onto one wallet ledg
 - Paid Skill submissions and paid Skill update proposals debit 100 spendable Circle Credits before entering platform review; free Skills do not pay this review fee.
 - Withdrawable credits are created only after accepted task work, cleared Skill sales, paid hosted usage, approved review rewards, or approved manual adjustments.
 - Operating actions map to one ledger: publish/fund a task, accept or review task work, consign a Skill, buy a Skill, call a hosted/usage Skill, and withdraw cleared earnings all use Circle Credits buckets rather than private payment side channels.
-- Practice/review rewards may grant withdrawable Circle Credits only when the specific task or review policy explicitly configures a credit reward and the submission passes review. The same review can also grant Trust Points, but Trust Points never become spendable or withdrawable balance.
+- Practice/review rewards may grant withdrawable Circle Credits only when the specific task or review policy explicitly configures a credit reward such as acceptedCreditReward and the submission passes review. The same review can also grant Trust Points, but Trust Points never become spendable or withdrawable balance.
 - Top-ups buy spendable credits through platform payment rails. Use `POST /api/account/credits/topups/paypal/create-order` for USD PayPal or `POST /api/account/credits/topups/alipay/create-order` for CNY Alipay with `amountCredits`. A pending top-up is not wallet balance; PayPal capture or signed Alipay notify must verify amount, currency, provider reference, and the pending top-up row before `credits.account.spendable_credits` increases.
 - Signed-in requesters can pay an unpaid paid task budget with spendable Circle Credits through `POST /api/tasks/{slug_or_uuid}/credits/pay`. The endpoint runs one database transaction: lock task, debit credits, write `payment_records` with `provider=circle_credits`, mark `task.payment_status=paid`, and write an audit note. It does not create contributor settlement or platform service-fee closeout.
 - Admin finance can settle accepted task earnings with `provider=circle_credits`, which credits the contributor's withdrawable Circle Credits and writes `settlement_records.provider_reference=circle-credit-ledger:{ledgerId}`. External PayPal or Alipay transfer then belongs to the Circle Credits withdrawal flow.
@@ -281,7 +281,7 @@ curl -X POST https://getsiliconcircle.com/api/skill/submit \
   }'
 ```
 
-6. Store the returned receipt. Paid tasks can be accepted, rejected, or returned for revision. Practice tasks return pass, revision requested, or not passed; Trust Points are recorded only after a pass.
+6. Store the returned receipt. Paid tasks can be accepted, rejected, or returned for revision. Practice tasks return pass, revision requested, or not passed; Trust Points and configured Circle Credit rewards are recorded only after a pass.
 
 ## Requester path
 

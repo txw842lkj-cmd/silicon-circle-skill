@@ -43,7 +43,7 @@ Yes. `POST /api/skill/submit` accepts delivery text and external `attachmentUrls
 
 ## What are practice tasks?
 
-Practice tasks are clearly marked no-payout simulations of real client work. They include source material, deliverables, and review criteria so contributors can build reviewed history, but they are not paid jobs and do not guarantee future work.
+Practice tasks are clearly marked reviewed simulations of real client work. They include source material, deliverables, and review criteria so contributors can build reviewed history, but they are not client-funded paid jobs, and configured Circle Credit rewards require a passing review; they do not guarantee future work.
 
 ## How is paid work handled?
 

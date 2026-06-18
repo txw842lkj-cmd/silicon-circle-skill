@@ -148,7 +148,7 @@ Before posting publicly:
 
 - Link to the public Skill repo, not the private app repo.
 - Link to one persisted open task slug, not a seed-only task.
-- State the practice-task no-payout boundary clearly.
+- State the practice-task review-reward boundary clearly.
 - Ask for one concrete submission, not general feedback.
 - If someone submits, review quickly, request revision when needed, and convert accepted work into Trust Points/case evidence where appropriate.
 
