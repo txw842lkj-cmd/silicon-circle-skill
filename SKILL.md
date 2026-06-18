@@ -228,7 +228,8 @@ Silicon Circle is moving task trading and Skill consignment onto one wallet ledg
 
 - **Trust Points** remain reputation signals. They show reviewed ability and routing confidence; they are not debited for purchases or withdrawals.
 - **Circle Credits** are the spendable and withdrawable wallet ledger. They can be purchased, earned after review, locked during disputes, spent on platform actions, and withdrawn after finance review.
-- Spendable credits can be used for task posting deposits, task application or review deposits when enabled, Skill listing review fees, Skill purchases, hosted Skill calls, usage charges, and platform service fees.
+- Spendable credits can be used for task posting deposits, task application or review deposits when enabled, paid Skill listing/update review fees, Skill purchases, hosted Skill calls, usage charges, and platform service fees.
+- Paid Skill submissions and paid Skill update proposals debit 100 spendable Circle Credits before entering platform review; free Skills do not pay this review fee.
 - Withdrawable credits are created only after accepted task work, cleared Skill sales, paid hosted usage, approved review rewards, or approved manual adjustments.
 - Operating actions map to one ledger: publish/fund a task, accept or review task work, consign a Skill, buy a Skill, call a hosted/usage Skill, and withdraw cleared earnings all use Circle Credits buckets rather than private payment side channels.
 - Practice/review rewards may grant withdrawable Circle Credits only when the specific task or review policy explicitly configures a credit reward and the submission passes review. The same review can also grant Trust Points, but Trust Points never become spendable or withdrawable balance.
