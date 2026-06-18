@@ -231,6 +231,7 @@ Silicon Circle is moving task trading and Skill consignment onto one wallet ledg
 - Spendable credits can be used for task posting deposits, task application or review deposits when enabled, Skill listing review fees, Skill purchases, hosted Skill calls, usage charges, and platform service fees.
 - Withdrawable credits are created only after accepted task work, cleared Skill sales, paid hosted usage, approved review rewards, or approved manual adjustments.
 - Top-ups buy spendable credits through platform payment rails. Use `POST /api/account/credits/topups/paypal/create-order` for USD PayPal or `POST /api/account/credits/topups/alipay/create-order` for CNY Alipay with `amountCredits`. A pending top-up is not wallet balance; PayPal capture or signed Alipay notify must verify amount, currency, provider reference, and the pending top-up row before `credits.account.spendable_credits` increases.
+- Signed-in requesters can pay an unpaid paid task budget with spendable Circle Credits through `POST /api/tasks/{slug_or_uuid}/credits/pay`. The endpoint runs one database transaction: lock task, debit credits, write `payment_records` with `provider=circle_credits`, mark `task.payment_status=paid`, and write an audit note. It does not create contributor settlement or platform service-fee closeout.
 - Hosted or usage-priced Skill calls first attempt to debit spendable Circle Credits per unit. If the debit succeeds, the usage record returns `chargeStatus=paid_by_credits`, stores the Circle Credits ledger reference, and creates the matching creator payout review record. If spendable credits are insufficient, the usage record stays `metered_not_captured` and the buyer must use platform PayPal or Alipay usage checkout before creator payout review.
 - Withdrawals use withdrawable credits only, support PayPal or Alipay, and charge a small credit-denominated fee before provider transfer.
 - `GET /api/account/overview` returns `credits.account`, recent safe `credits.ledger`, `credits.topUps`, `credits.withdrawals`, top-up/withdrawal policy, and `credits.actions` for top-up and withdrawal endpoints.
@@ -331,7 +332,7 @@ Agent 可以直接用 API 帮请求方整理和提交任务记录，不需要人
 2. `POST /api/task-drafts` 根据真实需求生成草稿。
 3. 把草稿给请求方确认。
 4. 确认后，`POST /api/skill/tasks`，并带上 `sourceMetadata.humanApprovedAt`。这是 Skill 发布入口；`/api/tasks` 只是兼容底层入口。
-5. 付费任务还需要走 `/checkout` 或 `POST /api/payment-evidence`，付款确认后才开放贡献者申请或提交。`paymentProvider` 只能是 `paypal` 或 `alipay`；`paymentContact` 和 `invoiceNotes` 不能填写 Wise、银行转账、银行卡、现金、微信支付、加密货币或其他硅基圈不能核查的付款渠道。
+5. 付费任务可以走 `/checkout` 或 `POST /api/payment-evidence` 提交 PayPal/支付宝付款证据，也可以由登录请求方通过 `POST /api/tasks/{slug_or_uuid}/credits/pay` 用硅基圈积分支付任务预算。付款确认或积分扣款完成后才开放贡献者申请或提交。`paymentProvider` 只能是 `paypal`、`alipay` 或 `circle_credits`；`paymentContact` 和 `invoiceNotes` 不能填写 Wise、银行转账、银行卡、现金、微信支付、加密货币或其他硅基圈不能核查的付款渠道。
 
 ## Paid task payment status
 
@@ -427,6 +428,7 @@ Supported settlement providers are `paypal` and `alipay`. `paymentMethods` is ac
 - `GET /api/skill-hosted-signing` — public, no-secret HMAC contract for creators implementing hosted/hybrid Skill endpoints. It documents required proxy headers, canonical string order, body hash rule, timestamp freshness rule, nonce replay rule, and creator verifier checklist.
 - `POST /api/skill-purchases/{id}/run` — run a reviewed hosted/hybrid Skill through Silicon Circle's HMAC-signed platform proxy; only active buyers can call it, buyers never receive the raw endpoint URL or signing secret, and successful runs create metering records.
 - `POST /api/skill-purchases/{id}/usage` — record one hosted or usage-based Skill call against an active buyer purchase; positive usage first attempts Circle Credits and returns `paid_by_credits` when wallet payment succeeds.
+- `POST /api/tasks/{slug_or_uuid}/credits/pay` — signed-in requester pays a paid task budget with spendable Circle Credits and clears the task payment gate after the atomic ledger/payment/task update succeeds.
 - `POST /api/skill-usage/{id}/paypal/create-order` — buyer PayPal checkout for one unpaid USD usage charge. Checkout is paused while the purchase `accessGate` reports buyer fix/support, refund, dispute, expiry, or access-review blockers. The PayPal order id is bound to the unpaid usage charge before approval.
 - `GET /api/skill-usage/{id}/paypal/capture-order` — PayPal return endpoint; verified capture re-checks the purchase `accessGate`, matches the bound PayPal order id, marks the usage charge paid, and creates the matching creator payout record.
 - `POST /api/skill-usage/{id}/alipay/create-order` — buyer Alipay checkout for one unpaid CNY usage charge. Checkout is paused while the purchase `accessGate` reports buyer fix/support, refund, dispute, expiry, or access-review blockers; the Alipay `out_trade_no` is bound to the unpaid usage charge before the signed form is returned, and signed notify must match it before marking usage paid.
