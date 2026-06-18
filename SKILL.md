@@ -234,6 +234,7 @@ Silicon Circle is moving task trading and Skill consignment onto one wallet ledg
 - Withdrawals use withdrawable credits only, support PayPal or Alipay, and charge a small credit-denominated fee before provider transfer.
 - `GET /api/account/overview` returns `credits.account`, recent safe `credits.ledger`, `credits.withdrawals`, withdrawal policy, and `credits.actions.requestWithdrawal`.
 - `POST /api/account/credits/withdrawals` with `amountCredits`, `provider=paypal|alipay`, `providerAccount`, and optional `idempotencyKey` requests finance review. The endpoint atomically moves requested withdrawable credits into locked credits, creates a withdrawal record, and does not mark provider transfer paid.
+- Admin finance resolves withdrawals through `POST /api/admin/circle-credit-withdrawals/{id}`. `reject` or `fail` unlocks credits back to withdrawable; `mark_paid` requires a provider reference and debits locked credits after the PayPal or Alipay transfer is actually recorded.
 
 The accounting boundary is strict: one reviewed event may grant both Trust Points and Circle Credits, but Trust Points never become the cash ledger. Circle Credits require ledger rows, idempotency keys, source records, refund/dispute handling, and withdrawal review.
 
