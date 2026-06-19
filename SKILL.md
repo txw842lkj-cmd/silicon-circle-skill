@@ -436,7 +436,7 @@ Supported settlement providers are `paypal`, `alipay`, and `circle_credits`. Pre
 - `GET /api/task-messages?task={slug_or_uuid}` / `POST /api/task-messages` — task-room communication for signed-in task participants.
 - `GET /api/task-artifacts?task={slug_or_uuid}` / `POST /api/task-artifacts` — task materials, message attachments, delivery files, revision evidence, dispute evidence, payment evidence, and settlement evidence for signed-in task participants.
 - `GET /api/workers/apply` / `POST /api/workers/apply` — submit or find one reviewed contributor identity; this is an early-access review record, not a full login account.
-- `GET /api/reputation` — reputation rules.
+- `GET /api/reputation` — reputation rules plus `creditEconomyBridge`, which states that Trust Points, contribution labels, accepted-submission status, and public-case credit are not balances; only explicit reviewed or settled Circle Credit rewards create withdrawable wallet entries.
 - `GET /api/cases` — public accepted cases; seed/example content is labeled and is not a paid win.
 - `GET /api/pricing` / `POST /api/pricing` — estimate task pricing and blockers; this does not charge or publish.
 - `GET /api/deal-room?task={slug_or_uuid}` — canonical task record.
