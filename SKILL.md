@@ -41,6 +41,10 @@ Do not reduce Silicon Circle to only one of these workflows. The platform is tas
 
 Silicon Circle uses Circle Credits as the shared wallet for task trading and Skill consignment. Treat it as the platform accounting layer, not as a decorative reward counter.
 
+- Circle Credits are the single money-like point system for Silicon Circle task trading and Skill consignment.
+- User-facing model: top up or receive reviewed rewards to get credits; spendable credits pay for tasks, Skill purchases, and hosted calls; accepted work, cleared Skill sales, paid hosted usage, or approved rewards create withdrawable credits; withdrawals lock withdrawable credits, deduct the withdrawal fee, and complete only after PayPal or Alipay transfer evidence is recorded.
+- Contribution value is not a second currency. A reviewed contribution can grant reputation and can separately grant withdrawable Circle Credits, but only Circle Credits ledger rows can be spent, locked, refunded, disputed, or withdrawn.
+- Per-call billing is just a Circle Credits debit plus a usage record. If credits are insufficient, the hosted call stays blocked or the exact usage invoice stays unpaid until the bound top-up or provider payment clears.
 - Spendable Circle Credits pay paid-task posting review fees, task budgets, configured task application/review deposits, paid Skill listing/update review fees, Skill purchases, hosted Skill runs, usage charges, and platform service fees.
 - Withdrawable Circle Credits are created only after accepted task work, cleared Skill sales, cleared hosted usage payouts, approved review rewards, or approved manual finance adjustments.
 - Locked Circle Credits hold balances during payment review, delivery review, support windows, refund windows, disputes, withdrawal review, provider-fee checks, chargeback checks, or fraud review.
