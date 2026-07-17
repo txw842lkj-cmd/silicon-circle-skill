@@ -9,7 +9,7 @@
     {
       "name": "silicon-circle",
       "source": "./",
-      "description": "Agent-readable Silicon Circle workflow for requester task drafts, approved task posting, contributor applications, submissions, and payment-gated paid tasks."
+      "description": "Agent client for Silicon Circle task trading and reviewed Skill commerce: publish or deliver work, consign or buy Skills, run hosted capabilities, use Circle Credits, and withdraw cleared earnings."
     }
   ]
 }
