@@ -140,7 +140,7 @@ For balances and current action templates, use `GET /api/account/overview` and `
 - Never put secrets, private credentials, sensitive personal data, off-platform payment instructions, or private contact details in task/Skill records.
 - Use platform storage for source material, message attachments, delivery/revision files, support evidence, and dispute evidence.
 - Formal task delivery uses `/api/skill/submit`; formal Skill access and support use the purchase room. Messages do not replace either record.
-- For task disputes, first raise the dispute through `/api/disputes` as a signed-in participant, then attach screenshots/logs/files as `scope=dispute_evidence` plus the returned `disputeId` through `POST /api/task-artifacts` (multipart example: `disputeId=dispute-id-returned-by-api-disputes`).
+- For task disputes, first raise the dispute through `POST /api/disputes` as a signed-in participant, then attach screenshots/logs/files as `scope=dispute_evidence` plus the returned `disputeId` through `POST /api/task-artifacts` (multipart example: `disputeId=dispute-id-returned-by-api-disputes`).
 - For Skill-order issues, follow the enabled purchase-room support, fix, refund, or dispute action. Do not bypass an action blocker.
 - Do not describe practice work as paid, a provider order as captured funds, a listing review fee as a sale, or a withdrawal request as a completed payout.
 
