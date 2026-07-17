@@ -41,13 +41,13 @@ Claude Code plugin metadata is also included:
 
 ## How It Stays Current
 
-The installed file is intentionally compact. Before execution it reads the live contract at:
+The installed file is intentionally compact. Before execution it reads the compact live index at:
 
 ```bash
-curl https://getsiliconcircle.com/api/skill/manifest
+curl "https://getsiliconcircle.com/api/skill/manifest?view=core"
 ```
 
-The manifest exposes current workflows, contract discovery routes, preflights, action recipes, and Circle Credits endpoints. Purchase and task rooms return enabled actions, blockers, body templates, prerequisites, and next steps. This prevents a downloaded Skill from relying on stale copied schemas.
+The core view exposes current workflows, contract discovery routes, preflights, execution rules, and Circle Credits boundaries. The full manifest remains available at `/api/skill/manifest` when a workflow-specific contract lacks a needed field. Purchase and task rooms return enabled actions, blockers, body templates, prerequisites, and next steps. This prevents a downloaded Skill from relying on stale copied schemas.
 
 ## Task Workflow
 

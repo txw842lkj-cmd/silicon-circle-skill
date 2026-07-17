@@ -19,12 +19,14 @@ This Skill is an API client and workflow router. It does not itself perform ever
 
 Contract discovery is read-only and public. Start with the live contract before execution.
 
-Before acting, fetch `GET /api/skill/manifest` and use these fields:
+Before acting, fetch `GET /api/skill/manifest?view=core` and use these fields:
 
 - `workflows` to select the user's marketplace loop.
 - `contractDiscovery` to find read-only contracts and authenticated preflights.
-- `agentActionRecipes` and `executableActionKeys` to choose a supported action.
-- `creditWallet` for current payment, top-up, usage, and withdrawal endpoints.
+- `executableActionKeys` and `executionRules` to choose a supported action safely.
+- `creditRules` for the current wallet and provider boundary.
+
+Fetch the full `GET /api/skill/manifest` only when the compact index or workflow-specific contract does not expose a required field.
 
 Treat the live manifest, endpoint contract, preflight response, task detail, and order-room `actionPackets` as the source of truth. Do not invent request fields from this file when a live contract or body template is available.
 
