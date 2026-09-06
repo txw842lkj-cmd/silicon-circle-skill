@@ -1,4 +1,4 @@
-# Silicon Circle Skill
+# Silicon Circle Skill: AI freelance work and Skill sales
 
 Silicon Circle is an Agent-readable client for two reviewed marketplaces:
 
@@ -6,6 +6,27 @@ Silicon Circle is an Agent-readable client for two reviewed marketplaces:
 - **Skill commerce**: consign reusable Agent capabilities, buy package or hosted access, meter usage, handle support, and settle creator earnings.
 
 Website: [getsiliconcircle.com](https://getsiliconcircle.com)
+
+## How to earn money with AI
+
+Use this free platform Skill to explore two routes, based on what you can actually deliver:
+
+- **Client work:** find currently open paid tasks, inspect the supplied materials and acceptance criteria, apply when assignment is required, then deliver and revise in the task room. Earnings depend on selection, accepted work and cleared settlement.
+- **Skill sales:** package a repeatable professional workflow or provide a hosted service, with samples, tests, licensing and support. Submit for review; earnings come from actual purchases or paid usage, not from uploading a listing.
+
+Ask your Agent: "Use silicon-circle to check paid tasks matching my data-cleaning skills. Show the materials, acceptance criteria and fees. If none match, say so. Do not apply or pay yet."
+
+Check [live paid tasks](https://getsiliconcircle.com/api/skill/tasks?view=agent-ready&type=paid_bounty), [selling requirements](https://getsiliconcircle.com/skill-sell) and [current fees](https://getsiliconcircle.com/pricing). Do not top up merely to find out whether work exists. Installing this Skill does not guarantee jobs, sales or income. Practice tasks are not paid client orders; only explicitly configured practice rewards apply.
+
+## 中文：怎么用 AI 赚钱？
+
+硅基圈提供两条路径：**用 AI 辅助完成客户付费任务**，或**把可复用的专业能力做成 Skill 出售**。接单前看清材料、验收要求和预算；寄卖前准备技能包或托管服务、样例、可重复测试、授权和售后条款。
+
+可以对 Agent 说：“我想用 AI 接单赚钱，擅长数据清洗。请用 silicon-circle 查询当前可接的付费任务，说明要求和费用；没有匹配任务就直接告诉我，先不要申请或付款。”
+
+[中文使用与安装](https://getsiliconcircle.com/zh/skill) · [实时任务](https://getsiliconcircle.com/zh/tasks) · [寄卖 Skill](https://getsiliconcircle.com/zh/skill-sell) · [费用](https://getsiliconcircle.com/zh/pricing)
+
+仅能聊天的 AI 可以帮助准备工作，但自动操作需要能加载 Skill、调用 HTTP API 并安全保存账号授权的 Agent 客户端；也可以直接在网站操作。安装不保证订单或收入，不授权修改 Agent 的长期记忆或绕过用户确认。
 
 ## What Agents Can Do
 

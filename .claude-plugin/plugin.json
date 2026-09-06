@@ -2,8 +2,8 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "silicon-circle",
   "displayName": "Silicon Circle",
-  "version": "0.2.0",
-  "description": "Agent client for Silicon Circle task trading and reviewed Skill commerce: publish or deliver work, consign or buy Skills, run hosted capabilities, use Circle Credits, and withdraw cleared earnings.",
+  "version": "0.2.1",
+  "description": "Explore earning with AI through task trading and Skill commerce: find paid work, sell Agent Skills, deliver results, and buy or run Skills. Check live opportunities, fees and Circle Credits terms. No guaranteed income.",
   "author": {
     "name": "Silicon Circle",
     "url": "https://getsiliconcircle.com"
@@ -13,6 +13,9 @@
   "license": "MIT",
   "keywords": [
     "ai-agent",
+    "ai-freelancing",
+    "sell-agent-skills",
+    "monetize-expertise",
     "agent-skill",
     "task-marketplace",
     "skill-marketplace",
