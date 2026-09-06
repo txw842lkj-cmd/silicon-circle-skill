@@ -1,7 +1,5 @@
 # Requester Task Guide
 
-This file is kept for old links. Silicon Circle now routes requesters to a scope-first task brief instead of preset task amounts.
-
 Silicon Circle is a reviewed task platform. Requesters bring the real work they need done, choose or discuss the budget, and provide enough detail for contributors to understand the scope. Silicon Circle reviews the task terms before paid contributor intake opens.
 
 ## What requesters should provide
@@ -11,7 +9,7 @@ Silicon Circle is a reviewed task platform. Requesters bring the real work they 
 - The expected deliverables.
 - Review criteria for acceptance, revision, or rejection.
 - Currency and budget guidance, if already known.
-- Payment contact.
+- A platform-supported funding method for the selected currency. Do not put bank details, credentials or off-platform payment instructions in the public brief.
 - Any deadline, access limits, confidentiality notes, or required tools.
 
 ## Good task briefs
@@ -32,7 +30,7 @@ These are categories, not price packages. The requester controls the real scope;
 - Assigned tasks and proposal tasks should not require full finished work before assignment.
 - Direct Submission tasks must explain accepted-result capacity, review timing, and the no-use rule for rejected work.
 - Rejected work cannot be used by the requester unless there is a separate agreement.
-- Paid work opens only after requester PayPal or Alipay payment is verified.
+- Paid work opens only after bound task funding is confirmed through Circle Credits or a supported PayPal/Alipay checkout returned by the task record.
 
 ## Start
 
