@@ -41,6 +41,7 @@ Use public contract mode before authenticated execution when offered, for exampl
 
 - Public GET routes support discovery only. They do not create applications, purchases, payments, deliveries, disputes, or payouts.
 - Mutations that affect an account, task, wallet, purchase, support case, or withdrawal require the acting user's bearer session.
+- Send `Authorization: Bearer <account_access_token>` on task publishing, contributor registration, applications, submissions, provider checkout, and payment-evidence requests. An email in the body is not authentication. Use the user's account sign-in flow; do not request their password or use a platform admin token.
 - Never expose bearer tokens, provider credentials, private keys, cookies, package storage paths, hosted endpoint secrets, or raw payout accounts.
 - A requester-side Agent may prepare and submit records, but must not invent the requester's scope, budget, materials, acceptance criteria, payment approval, or final approval.
 - Use `sourceMetadata.humanApprovedAt` only after the requester or authorized representative has reviewed the final task terms.
@@ -63,7 +64,8 @@ Use public contract mode before authenticated execution when offered, for exampl
 2. Show the normalized title, scope, mode, materials, environment, deliverables, acceptance criteria, budget, payment path, and blockers to the requester.
 3. After explicit approval, send the approved fields to `POST /api/skill/tasks` with `sourceMetadata.humanApprovedAt`.
 4. For paid work, follow the returned payment gate and `paymentProvider` contract. Supported task rails are Circle Credits, PayPal, and Alipay. A signed-in requester can use `POST /api/tasks/{slug_or_uuid}/credits/pay`; provider fallback must remain bound to the same task/payment record.
-5. Read `GET /api/deal-room?task={slug_or_uuid}` until payment and review state allow contributor intake.
+5. The requester can read `GET /api/tasks/checkout?task={slug_or_uuid}` with their bearer session for the canonical amount and payment status. Task PayPal checkout is USD; Alipay checkout is CNY. Reuse an unpaid provider order instead of opening duplicate orders.
+6. Read `GET /api/deal-room?task={slug_or_uuid}` for the published brief. Requester transaction details require the requester's bearer session; contributors use their account, messages, and task-files endpoints for private work. Never trust URL parameters as payment confirmation.
 
 Do not claim that a task is open, funded, paid, or revenue-producing from a draft, checkout intent, provider order, or unverified payment reference.
 
@@ -155,6 +157,7 @@ For balances and current action templates, use `GET /api/account/overview` and `
 ## 中文执行速查
 
 - 发布任务：`/api/task-drafts` -> 请求方确认 -> `/api/skill/tasks` -> 任务付款/任务房间。
+- 发布、注册贡献者、申请、提交和付款均需当前用户的 Bearer 登录凭证；只填邮箱不能代替登录。任务金额和付款状态以登录后的 `/api/tasks/checkout?task={slug_or_uuid}` 为准，不能使用网址参数判断是否已付。
 - 接单交付：读取任务资格 -> `/api/skill/apply` -> 站内消息和附件 -> `/api/skill/submit` -> 验收/修改/争议。
 - 寄卖 Skill：上传包或远程探测 -> `/api/skill-products` -> 平台审核 -> 上架或修改。
 - 购买 Skill：商品详情 -> 购买预检 -> 只创建一个购买记录 -> 积分或绑定的 PayPal/支付宝支付 -> 订单房间。
